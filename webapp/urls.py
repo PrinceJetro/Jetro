@@ -19,7 +19,8 @@ urlpatterns = [
        path('feeds/<int:pk>/other_posts/', my_posts, name='other_posts'),
        path("new", newPost, name="new"),
        path("create_post/image", image, name="image"),
-       path("new_create_comment/<int:pk>/", new_create_comment, name="new_create_comment")
+       path("new_create_comment/<int:pk>/", new_create_comment, name="new_create_comment"),
+       path("all_comments", all_comments, name="all_comments")
 
 
 ]

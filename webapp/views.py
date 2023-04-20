@@ -314,5 +314,14 @@ def new_like_post(request, post_id):
     return redirect('feeds', pk=post.pk)
 
 
+def all_comments(request):       
+        newcomments = NewComments.objects.order_by('-created_at')
+        comments = Comments.objects.order_by('-created_at')
+
+        return render(request, 'hotel_image_form.html', {'comments': comments, 'newcomments': newcomments})
+
+
+
+
 # https://fmlguqqzwmsqgobmvzll.supabase.co/storage/v1/object/public/Jetro/17165503.jpg
 # https://fmlguqqzwmsqgobmvzll.supabase.co/storage/v1/object/public/Jetro/vlcsnap-error426.png

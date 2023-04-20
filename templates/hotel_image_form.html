@@ -1,43 +1,92 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Notifications</title>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<!------ Include the above in your HEAD tag ---------->
+
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous">
+      
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"></script>
+
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+      
+
+      <style>
+
+@media only screen and (min-width: 600px) {
+#comment_btn {
+  display: none;
+}
+}
+          body {
+          background-color: #eeeeee;
+      }
+
+      .h7 {
+          font-size: 0.8rem;
+      }
+
+      .gedf-wrapper {
+          margin-top: 0.97rem;
+      }
+
+      @media (min-width: 992px) {
+          .gedf-main {
+              padding-left: 4rem;
+              padding-right: 4rem;
+          }
+          .gedf-card {
+              margin-bottom: 2.77rem;
+          }
+      }
+
+      /**Reset Bootstrap*/
+      .dropdown-toggle::after {
+          content: none;
+          display: none;
+      }
+      </style>
 </head>
-<body>
-    <h1>Index</h1>
+
+<a href="#" onclick="history.go(-1)"><i class="fas fa-home"></i>Home</a>
+
+{% for p in newcomments %}
+<div class="card gedf-card" id="comment">
+        <div class="card-body">
+
+            <h5 class="card-title">@ {{p.author}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Replied </h6>
+            <p class="card-text">{{p.content}}</p>
+            <p class="card-link">To @ {{p.post.author.username}}'s post with title "{{p.post}}"</p>
+        </div>
+
+    </div>
+    {% endfor %}
 
 
 
+{% for p in comments %}
+<div class="card gedf-card" id="comment">
+        <div class="card-body">
 
-    
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ slt.as_p }}
-        <button type="submit">Submit</button>
-      </form>
-            <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Uploaded at</th>
-            <th>Size</th>
-          </tr>
-        </thead>
-        <tbody>
-          {% for i in form %}
-            <tr>
-              <td><img src="{{ i.image_link}}" alt="image" width="300" height="300"></td>
-                          </tr>
-          {% empty %}
-            <tr>
-              <td colspan="3">No data.</td>
-            </tr>
-          {% endfor %}
-        </tbody>
-      </table>
+            <h5 class="card-title">@ {{p.author}}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Replied </h6>
+            <p class="card-text">{{p.content}}</p>
+            <p class="card-link">To @ {{p.post.author.username}}'s post with title "{{p.post}}"</p>
+        </div>
 
-    </body>
-</html>
+    </div>
+    {% endfor %}
+
