@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Profile</h1>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Save">
+    </form>
+{% endblock %}
+
+
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Profile</h1>
+    {% if user.profile.profile_pic %}
+        <img src="{{ user.profile.profile_pic.url }}" alt="{{ user.username }}'s profile picture">
+    {% endif %}
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Save">
+    </form>
+{% endblock %}
