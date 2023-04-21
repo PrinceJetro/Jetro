@@ -84,7 +84,8 @@ def home(request):
             print("Authenticated")
 
             return redirect(reverse('feeds', kwargs={'pk': request.user.pk}))
-        return  render(request, 'register.html')
+        
+        return  render(request, 'login.html')
 
 @login_required
 def feeds(request, pk):  
