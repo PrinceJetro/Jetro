@@ -546,7 +546,7 @@
                     {% endif %}
 
                     
-                    <h1 class="card-text">{{post.content}}</h1>
+                    <h3 class="card-text">{{post.content}}</h3>
                 </div>
                 <div class="card-footer">
                     <a href="{% url 'new_like_post' post.id %}" class="card-link"><i class='fas fa-star' style='color:red'></i> Star</a><p style="display: inline;">{{ post.likes.count }}</p>
@@ -600,7 +600,7 @@
             <a class="card-link" href="#">
                 <h5 class="card-title">{{post.title}}</h5>
             </a>
-            <h1 class="card-text">{{post.content}}</h1>
+            <h3 class="card-text">{{post.content}}</h3>
         </div>
         <div class="card-footer">
             <a href="{% url 'like_post' post.id %}" class="card-link"><i class='fas fa-star' style='color:red'></i> Star</a><p style="display: inline;">{{ post.likes.count }}</p>
