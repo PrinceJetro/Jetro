@@ -152,22 +152,22 @@ def create_comment(request, pk):
             print(c.post.author.email)
             # set up the email parameters
 
-            sender_email = 'adegbuyijephthah@gmail.com'
-            receiver_email = c.post.author.email
-            password= "iqmidezpskhnpafv"
-            subject = c.post.title
-            body = f'{c.author.username} made a new comment on your post title {c.post.title} click https://jetrostagram.vercel.app to login and view it'
-            em= EmailMessage()
-            em["From"] = sender_email
-            em["To"] = receiver_email
-            em["subject"] = subject
-            em.set_content(body)
+#            sender_email = 'adegbuyijephthah@gmail.com'
+  #          receiver_email = c.post.author.email
+ #           password= "iqmidezpskhnpafv"
+   #         subject = c.post.title
+    ##        body = f'{c.author.username} made a new comment on your post title {c.post.title} click https://jetrostagram.vercel.app to login and view it'
+      #      em= EmailMessage()
+       #     em["From"] = sender_email
+        #    em["To"] = receiver_email
+         #   em["subject"] = subject
+          #  em.set_content(body)
 
-            context = ssl.create_default_context()
-            with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
-                smtp.login(sender_email, password)
-                smtp.sendmail(sender_email,receiver_email, em.as_string())
-            print("Email sent successfully!")
+           # context = ssl.create_default_context()
+            #with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
+             #   smtp.login(sender_email, password)
+              #  smtp.sendmail(sender_email,receiver_email, em.as_string())
+            #print("Email sent successfully!")
 
 
 
@@ -293,22 +293,22 @@ def new_create_comment(request, pk):
             print(c.post.author.email)
             # set up the email parameters
 
-            sender_email = 'adegbuyijephthah@gmail.com'
-            receiver_email = c.post.author.email
-            password= "iqmidezpskhnpafv"
-            subject = c.post.title
-            body = f'{c.author.username} made a new comment on your post title {c.post.title} click https://jetrostagram.vercel.app to login and view it'
-            em= EmailMessage()
-            em["From"] = sender_email
-            em["To"] = receiver_email
-            em["subject"] = subject
-            em.set_content(body)
+#            sender_email = 'adegbuyijephthah@gmail.com'
+  #          receiver_email = c.post.author.email
+ #           password= "iqmidezpskhnpafv"
+   #         subject = c.post.title
+    ##        body = f'{c.author.username} made a new comment on your post title {c.post.title} click https://jetrostagram.vercel.app to login and view it'
+      #      em= EmailMessage()
+       #     em["From"] = sender_email
+        #    em["To"] = receiver_email
+         #   em["subject"] = subject
+          #  em.set_content(body)
 
-            context = ssl.create_default_context()
-            with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
-                smtp.login(sender_email, password)
-                smtp.sendmail(sender_email,receiver_email, em.as_string())
-            print("Email sent successfully!")
+           # context = ssl.create_default_context()
+            #with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
+             #   smtp.login(sender_email, password)
+              #  smtp.sendmail(sender_email,receiver_email, em.as_string())
+            #print("Email sent successfully!")
 
 
 
