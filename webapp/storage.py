@@ -5,15 +5,14 @@ from supabase import create_client
 class SupabaseStorage(Storage):
     def __init__(self):
         self.client = create_client(settings.SUPABASE_URL, settings.SUPABASE_KEY)
-        self.bucket = self.client.storage.from_(settings.SUPABASE_BUCKET)
+        self.bucket = self.client.storage.from_(settings.SUPABASE_BUCKET,)
 
     def _open(self, name, mode='rb'):
         pass
 
     def _save(self, name, content):
         self.bucket.upload(name, content.read())
-        return name
-
+        return name    
     def delete(self, name):
         pass
 

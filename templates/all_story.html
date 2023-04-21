@@ -47,9 +47,7 @@ img {
 }
 
 /* Add a transparency effect for thumnbail images */
-.demo {
-  opacity: 0.6;
-}
+
 
 .active,
 .demo:hover {
@@ -72,7 +70,7 @@ img {
   <div class="row">
     {% for image in story_image %}
      <div class="column">
-      <img class="demo cursor" src="{{ image.image_link }}" style="width:100%; height:150px" alt="Snowy Mountains"><p style="display:none">@{{image.author}}</p>
+      <img class="demo cursor" src="{{ image.image_link }}" style="width:100%; height:150px" alt="Snowy Mountains"><p style="display:none">@{{image.author}}'s Story</p>
     </div>
     {% endfor %}
   </div>

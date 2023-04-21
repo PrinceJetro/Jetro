@@ -1,79 +1,93 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-
-<style>
-  body{
-      background-color: black;
-  }
-  label {
-    display: block;
-    width: 60vw;
-    max-width: 300px;
-    margin: 0 auto;
-    background-color: slateblue;
-    border-radius: 2px;
-    font-size: 1em;
-    line-height: 2.5em;
-    text-align: center;
-  }
-  
-  label:hover {
-    background-color: cornflowerblue;
-  }
-  
-  label:active {
-    background-color: mediumaquamarine;
-  }
-  
-  input {
-    border: 0;
-      clip: rect(1px, 1px, 1px, 1px);
-      height: 1px; 
-      margin: -1px;
-      overflow: hidden;
-      padding: 0;
-      position: absolute;
-      width: 1px;
-  }
-  
-  .main {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-    overflow: hidden;
-    background-color: black;
-  }
-
-  button{
-      width:100%
-  }
-</style>
-
-  <h2 style="color:aliceblue">Upload Picture</h2> 
-  
-  
-
-  
-
-<div class="main">
-  <form method = "post" id="imageform" enctype="multipart/form-data" action="image">
-		{% csrf_token %}
-		{{ image.as_p }}
-    <button type="submit" class="btn btn-success">Upload</button>
-	</form>
-</div>
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Image</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    
+    <style>
+      body{
+          background-color: black;
+      }
+      label {
+        display: block;
+        width: 60vw;
+        max-width: 300px;
+        margin: 0 auto;
+        background-color: slateblue;
+        border-radius: 2px;
+        font-size: 1em;
+        line-height: 2.5em;
+        text-align: center;
+      }
+      
+      label:hover {
+        background-color: cornflowerblue;
+      }
+      
+      label:active {
+        background-color: mediumaquamarine;
+      }
+      
+      input {
+        border: 0;
+          clip: rect(1px, 1px, 1px, 1px);
+          height: 1px; 
+          margin: -1px;
+          overflow: hidden;
+          padding: 0;
+          position: absolute;
+          width: 1px;
+      }
+      
+      .main {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        width: 100vw;
+        overflow: hidden;
+        background-color: black;
+      }
+    
+      button{
+          width:100%
+      }
+    </style>
+     
+     
+  </head>
+  <body>
+    <div class="container-fluid">
 
 
+      <h2 style="color:aliceblue">Upload Picture</h2> 
+ 
 
-  <script>
-  if (confirm("would you like to upload a picture?")) {
-    console.log("User confirmed delete.");
-  } else {
-    location.href="content"
-  }
-  
-  
-  </script>
+
+      <div class="main">
+        <form method = "post" id="imageform" enctype="multipart/form-data" action="image">
+          {% csrf_token %}
+          {{ image.as_p }}
+          <button type="submit" class="btn btn-success">Upload</button>
+        </form>
+      </div>
+      
+      
+      
+        <script>
+        if (confirm("would you like to upload a picture?")) {
+          console.log("User confirmed delete.");
+        } else {
+          location.href="content"
+        }
+        
+        
+        </script>
+    </div>
+  </body>
+  </html>

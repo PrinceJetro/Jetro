@@ -94,7 +94,7 @@ def feeds(request, pk):
     Newlatest_posts = NewPost.objects.order_by('-created_at')[:1000]
 
     # Shuffle the posts randomly
-    sto = Story.objects.order_by('-created_at')[:100]
+    sto = Story.objects.order_by('-created_at')[:3]
     p = Post.objects.order_by('-created_at')[:100]
     new = NewPost.objects.order_by('-created_at')[:100]
     post = Comments.objects.order_by('-id')[:100]
@@ -237,8 +237,9 @@ def image(request):
         if form.is_valid():
             image = form.cleaned_data['image']
             storage = SupabaseStorage()
+            post = 'jetrostagramposts/' + image.name
             try:
-                filename = storage.save(image.name, image)
+                filename = storage.save(post, image)
             except:
                 return HttpResponse("Please upload another image, this image already exists")
 
@@ -344,10 +345,11 @@ def StoryView(request):
         if form.is_valid():
             image = form.cleaned_data['image']
             storage = SupabaseStorage()
+            story = 'jetrostagramstory/' + image.name
             try:
-                filename = storage.save(image.name, image)
-            except:
-                return HttpResponse("Please upload another image, this image already exists")
+                filename = storage.save(story, image)
+            except Exception:   
+                return HttpResponse("Please upload another image, this image has already been posted by you")
                 
 
             url = storage.url(filename)
