@@ -93,7 +93,7 @@ def feeds(request, pk):
     Newlatest_posts = NewPost.objects.order_by('-created_at')[:1000]
 
     # Shuffle the posts randomly
-
+    sto = Story.objects.order_by('-created_at')[:100]
     p = Post.objects.order_by('-created_at')[:100]
     new = NewPost.objects.order_by('-created_at')[:100]
     post = Comments.objects.order_by('-id')[:100]
@@ -102,7 +102,17 @@ def feeds(request, pk):
         post.title = i.author
     for j in NewPost.objects.all():
         post.title = i.author
-    return render(request, 'index.html', { 'p': latest_posts, 'post': post, 'pk': pk, "new": Newlatest_posts, 'newcomment': newcomment })
+
+
+    context = { 'p': latest_posts, 
+               'post': post, 
+               'pk': pk, 
+               "new": Newlatest_posts, 
+               'newcomment': newcomment,
+               "sto":sto
+            }
+
+    return render(request, 'index.html', context )
 
 
 
@@ -226,14 +236,21 @@ def image(request):
         if form.is_valid():
             image = form.cleaned_data['image']
             storage = SupabaseStorage()
-            filename = storage.save(image.name, image)
+            try:
+                filename = storage.save(image.name, image)
+            except:
+                return HttpResponse("Please upload another image, this image already exists")
+
             global url 
             url = storage.url(filename)
             print(url)
             values = (("first", redirect("register")), ("second", url))
             dicti = dict(values) 
             print(dicti["second"])
-            return redirect("create_post")
+            return redirect("create_post/content")
+    else:
+        image = ImageForm()
+        return render(request, 'create_post.html', {"image": image})
 
 def newPost(request):
     if request.method == 'POST':
@@ -254,9 +271,8 @@ def newPost(request):
             return redirect(reverse('feeds', kwargs={'pk': request.user.pk}))
     else:
         slt = NewPostForm()
-        image = ImageForm()
         form = NewPost.objects.all()
-    return render(request, 'create_post.html', {'form': form, "image": image, "slt":slt})
+    return render(request, 'contents.html', {'form': form, "slt":slt})
 
 
 @login_required
@@ -321,7 +337,31 @@ def all_comments(request):
         return render(request, 'hotel_image_form.html', {'comments': comments, 'newcomments': newcomments})
 
 
+def StoryView(request):
+    if request.method == "POST":
+        form = StoryForm(request.POST, request.FILES)
+        if form.is_valid():
+            image = form.cleaned_data['image']
+            storage = SupabaseStorage()
+            try:
+                filename = storage.save(image.name, image)
+            except:
+                return HttpResponse("Please upload another image, this image already exists")
+                
 
+            url = storage.url(filename)
+            print(url)
+            values = (("first", redirect("register")), ("second", url))
+            dicti = dict(values) 
+            print(dicti["second"])
+            new_story = Story.objects.create(image_link=url,author= request.user)
+            return redirect(reverse('feeds', kwargs={'pk': request.user.pk}))
+    else:
+        image = StoryForm()
+        return render(request, 'story.html', {"image": image})
+    
 
-# https://fmlguqqzwmsqgobmvzll.supabase.co/storage/v1/object/public/Jetro/17165503.jpg
-# https://fmlguqqzwmsqgobmvzll.supabase.co/storage/v1/object/public/Jetro/vlcsnap-error426.png
+def all_StoryView(request):
+    story_image = Story.objects.order_by('-created_at')[:100]
+
+    return render(request, "all_story.html", {"story_image": story_image})

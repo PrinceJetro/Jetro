@@ -8,7 +8,7 @@ urlpatterns = [
     path('login', login, name="login"),
     path('feeds/<int:pk>/',feeds, name='feeds'),
     path('feeds/<int:pk>/create_post/',newPost, name='create_post'),
-     path('create_post/', newPost, name='create_post'),
+     path('create_post/', image, name='create_post'),
      path("logout",logout_request, name= "logout"),
     path('comment/<int:pk>/',create_comment, name='create_comment'),
     path('post/<int:post_id>/like/', like_post, name='like_post'),
@@ -20,7 +20,10 @@ urlpatterns = [
        path("new", newPost, name="new"),
        path("create_post/image", image, name="image"),
        path("new_create_comment/<int:pk>/", new_create_comment, name="new_create_comment"),
-       path("all_comments", all_comments, name="all_comments")
+       path("all_comments", all_comments, name="all_comments"),
+       path("create_post/content", newPost, name="create_post/content"),
+       path("story", StoryView, name="story"),
+       path("all_story", all_StoryView, name="all_story"),
 
 
 ]

@@ -28,3 +28,9 @@ class NewCommentForm(forms.ModelForm):
     class Meta:
         model = NewComments
         fields = [ 'content',]
+
+
+class StoryForm(forms.ModelForm):
+    class Meta:
+        model = Story
+        fields = ['image']

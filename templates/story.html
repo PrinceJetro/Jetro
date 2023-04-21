@@ -52,14 +52,14 @@
   }
 </style>
 
-  <h2 style="color:aliceblue">Upload Picture</h2> 
+  <h2 style="color:aliceblue">Upload Story Picture</h2> 
   
   
 
   
 
 <div class="main">
-  <form method = "post" id="imageform" enctype="multipart/form-data" action="image">
+  <form method = "post" enctype="multipart/form-data" action="">
 		{% csrf_token %}
 		{{ image.as_p }}
     <button type="submit" class="btn btn-success">Upload</button>
@@ -68,12 +68,3 @@
 
 
 
-  <script>
-  if (confirm("would you like to upload a picture?")) {
-    console.log("User confirmed delete.");
-  } else {
-    location.href="content"
-  }
-  
-  
-  </script>

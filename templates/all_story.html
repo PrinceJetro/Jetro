@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  font-family: Arial;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+img {
+  vertical-align: middle;
+}
+
+/* Position the image container (needed to position the left and right arrows) */
+.container {
+  position: relative;
+}
+
+
+/* Add a pointer when hovering over the thumbnail images */
+.cursor {
+  cursor: pointer;
+}
+
+.caption-container {
+  text-align: center;
+  background-color: #222;
+  padding: 2px 16px;
+  color: white;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Six columns side by side */
+.column {
+  float: left;
+  width: 25%;
+  height:165px
+}
+
+/* Add a transparency effect for thumnbail images */
+.demo {
+  opacity: 0.6;
+}
+
+.active,
+.demo:hover {
+  opacity: 1;
+}
+</style>
+<body>
+
+<h2 style="text-align:center">Story Gallery</h2>
+
+<div class="container">
+  <div class="mySlides">
+    <img src="https://picsum.photos/1000/500" style="width:100%"id="myModal">
+  </div> 
+
+  <div class="caption-container">
+    <p id="caption"></p>
+  </div>
+
+  <div class="row">
+    {% for image in story_image %}
+     <div class="column">
+      <img class="demo cursor" src="{{ image.image_link }}" style="width:100%; height:150px" alt="Snowy Mountains"><p style="display:none">@{{image.author}}</p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+var modal = document.getElementById("myModal");
+      const headings = document.querySelectorAll('.cursor');
+        for (let i = 0; i < headings.length; i++) {
+          headings[i].addEventListener('click', function(event) {
+            console.log(event.target);
+            modal.src = event.target.src
+            let paragraph = event.target.nextSibling.innerHTML;
+  document.getElementById("caption").innerHTML = paragraph
+
+          });
+        }
+
+// Get the modal
+
+
+
+
+</script>
+    
+</body>
+</html>

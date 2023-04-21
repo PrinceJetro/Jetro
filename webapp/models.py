@@ -52,3 +52,10 @@ class NewComments(models.Model):
     
     def __str__(self):
         return f'{self.author} commented on {self.post}'
+
+
+class Story(models.Model):
+    author = models.ForeignKey(User, on_delete=models.CASCADE)
+    image = models.ImageField(upload_to="story")
+    created_at = models.DateTimeField(auto_now_add=True)
+    image_link = models.CharField(max_length=2000)
