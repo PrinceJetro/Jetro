@@ -52,6 +52,21 @@
             content: none;
             display: none;
         }
+
+
+        @font-face {
+            font-family: 'Fancy Script';
+            src: url('https://fonts.gstatic.com/s/fancyscript/v11/QldONTRRphEb_-V7HBm7TXFf.woff2') format('woff2'),
+                 url('https://fonts.gstatic.com/s/fancyscript/v11/QldONTRRphEb_-V7HBm7TXFf.woff') format('woff');
+            font-weight: normal;
+            font-style: normal;
+          }
+          .card-text{
+            font-family: 'Fancy Script', cursive;
+            color:rgba(0, 0, 255, 0.678);
+            
+          }
+        
         </style>
 </head>
 
@@ -92,10 +107,10 @@
             <h5 class="card-title">{{post.title}}</h5>
         </a>
         {% if post.image_link %}
-        <img src="{{ post.image_link }}" alt="" width="400" height="250">
+        <img src="{{ post.image_link }}" alt="" width="300" height="300" class="imagePost">
             {% endif %}
 
-        <p class="card-text">{{post.content}}</p>
+        <h3 class="card-text">{{post.content}}</h3>
     </div>
 </div>
 <!-- Post /////-->
