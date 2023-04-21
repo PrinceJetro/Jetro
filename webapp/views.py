@@ -154,7 +154,7 @@ def create_comment(request, pk):
 
             sender_email = 'adegbuyijephthah@gmail.com'
             receiver_email = c.post.author.email
-            password= "nygmolzorlpeullt"
+            password= "iqmidezpskhnpafv"
             subject = c.post.title
             body = f'{c.author.username} made a new comment on your post title {c.post.title} click https://jetrostagram.vercel.app to login and view it'
             em= EmailMessage()
@@ -295,7 +295,7 @@ def new_create_comment(request, pk):
 
             sender_email = 'adegbuyijephthah@gmail.com'
             receiver_email = c.post.author.email
-            password= "nygmolzorlpeullt"
+            password= "iqmidezpskhnpafv"
             subject = c.post.title
             body = f'{c.author.username} made a new comment on your post title {c.post.title} click https://jetrostagram.vercel.app to login and view it'
             em= EmailMessage()
