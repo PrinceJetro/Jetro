@@ -10,12 +10,15 @@ class PostForm(forms.ModelForm):
         fields = ['title', 'content']
 
 class CommentForm(forms.ModelForm):
+    content = forms.CharField(widget=forms.Textarea(attrs={'placeholder': 'Make a comment'}))
+    
     class Meta:
         model = Comments
-        fields = [ 'content',]
+        fields = ['content',]
 
 
 class NewPostForm(forms.ModelForm):
+    content = forms.CharField(widget=forms.Textarea(attrs={'placeholder': 'Make a Post'}))
     class Meta:
         model = NewPost
         fields = ['content']

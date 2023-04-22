@@ -274,7 +274,7 @@ def newPost(request):
     else:
         slt = NewPostForm()
         form = NewPost.objects.all()
-    return render(request, 'contents.html', {'form': form, "slt":slt})
+    return render(request, 'contents.html', {'form': form, "slt":slt,"url":url})
 
 
 @login_required

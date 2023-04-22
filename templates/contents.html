@@ -15,15 +15,7 @@
           background-color: black;
       }
       label {
-        display: block;
-        width: 60vw;
-        max-width: 300px;
-        margin: 0 auto;
-        background-color: slateblue;
-        border-radius: 2px;
-        font-size: 1em;
-        line-height: 2.5em;
-        text-align: center;
+        display: none;
       }
       
       label:hover {
@@ -34,16 +26,7 @@
         background-color: mediumaquamarine;
       }
       
-      input {
-        border: 0;
-          clip: rect(1px, 1px, 1px, 1px);
-          height: 1px; 
-          margin: -1px;
-          overflow: hidden;
-          padding: 0;
-          position: absolute;
-          width: 1px;
-      }
+
       
       .main {
         display: flex;
@@ -56,18 +39,28 @@
       }
   
       button{
-          width:100%
+          width:50%
       }
+      textarea{
+        width:90%;
+        height:75px;
+        border-radius: 10px;
+     }
     </style>
 </head>
 <body>
 <div class="container-fluid">
-  <h2 style="color:aliceblue">Create Caption</h2> 
+  <h2 style="color:aliceblue">Create Post</h2> 
  
-  
+
   <div class="main"> 
       <form method = "post" id="imageform" enctype="multipart/form-data" action="">
           {% csrf_token %}
+          {% if url%}
+          <img src="{{url}}" alt="Story image" width="85%" height="auto">
+          
+          {% endif %}
+          
           {{ slt.as_p }}
           <button type="submit" class="btn btn-success">Upload</button>
       </form>
