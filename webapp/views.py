@@ -47,6 +47,7 @@ def register(request):
             else:
                 user = User.objects.create_user(username = username,first_name=first_name,last_name=last_name, email=email, password= password1 )
                 user.save()
+                auth.login(request, user)
         else:
             messages.info(request, "Password not matching")
             return redirect('register')
@@ -61,7 +62,6 @@ def login(request):
 
         return redirect(reverse('feeds', kwargs={'pk': request.user.pk}))
     if request.method == 'POST':
-        print("here ooo")
         username = request.POST['username']
         password = request.POST['password']
 
@@ -69,7 +69,6 @@ def login(request):
         user = auth.authenticate(username=username, password=password)
 
         if user is not None:
-            print("not none")
             auth.login(request, user)
             return redirect(reverse('feeds', kwargs={'pk': request.user.pk}))
         else:
