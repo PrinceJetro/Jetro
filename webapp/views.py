@@ -22,6 +22,43 @@ from .forms import *
 
 # Python program to view
 # for displaying images
+# for i in User.objects.all():
+#     print(i.username)
+#     sender_email = 'adegbuyijephthah@gmail.com'
+#     receiver_email = i.email
+#     password= "nxafdqmnwypeyusr"
+#     subject = "Introducing Our New Chat Web App!"
+#     body = f"""
+#     Hi {i.username}, 
+#     I hope this email finds you well. This is Jetro, the developer of the Jetrostagram, reaching out to you with exciting news! I wanted to personally update you on our latest project and invite you to be a part of it.
+
+# Introducing our new chat web application: ChatWave. As a valued user of our previous web app, I wanted to extend an exclusive invitation to join our growing community on this exciting new platform.
+    
+#     Our chat web app provides a seamless and interactive way to connect with others in real-time. Whether you're looking to chat with friends, collaborate with colleagues, or meet new people with shared interests, our chat web app has got you covered.
+
+# You can access the chat web app by clicking the following link: https://prince-jetro-chat-app.vercel.app/
+
+# I encourage you to explore the chat web app, start conversations, and make meaningful connections. Your FEEDBACKS and SUGGESTIONS are valuable to us as we continue to improve and enhance the platform.
+
+# Thank you for being a part of our community. We look forward to seeing you on the chat web app!
+
+# Best regards,
+
+# Jetro
+# Developer of Jetrostagram
+#     """
+#     em= EmailMessage()
+#     em["From"] = sender_email
+#     em["To"] = receiver_email
+#     em["subject"] = subject
+#     em.set_content(body)
+
+#     context = ssl.create_default_context()
+#     with smtplib.SMTP_SSL('smtp.gmail.com', 465, context=context) as smtp:
+#         smtp.login(sender_email, password)
+#         smtp.sendmail(sender_email,receiver_email, em.as_string())
+#     print("Email sent successfully!")
+
 
 
 
@@ -77,6 +114,8 @@ def login(request):
             return redirect('login')
     else:
         return render(request, "login.html")
+    
+    
 
 def home(request):
         if request.user.is_authenticated:
